@@ -8,6 +8,7 @@ import javax.persistence.Table;
 
 import org.bson.types.BSONTimestamp;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Model object package un prefix stands for United Notions
@@ -16,6 +17,7 @@ import org.bson.types.ObjectId;
  */
 @Entity
 @Table(name = "Registration")
+@Document
 public class Registration implements Serializable {
 
 	/**
@@ -25,6 +27,7 @@ public class Registration implements Serializable {
 
 	@Id
 	private ObjectId id;
+	
 	private String orgName;
 	private String orgPrefix;
 	private String contact;

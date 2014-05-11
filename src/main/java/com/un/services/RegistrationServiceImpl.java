@@ -5,19 +5,20 @@ import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 
 import com.un.dao.BaseDao;
+import com.un.dao.RegistrationDaoImpl;
 import com.un.domain.Registration;
 
 public class RegistrationServiceImpl implements RegistrationService<Registration> {
 
 	private static final Logger logger = Logger
 			.getLogger(RegistrationServiceImpl.class);
-	private BaseDao dao;
+	private BaseDao<Registration> dao;
 
-	public BaseDao getDao() {
+	public BaseDao<Registration> getDao() {
 		return dao;
 	}
 
-	public void setDao(BaseDao dao) {
+	public void setDao(BaseDao<Registration> dao) {
 		this.dao = dao;
 	}
 
