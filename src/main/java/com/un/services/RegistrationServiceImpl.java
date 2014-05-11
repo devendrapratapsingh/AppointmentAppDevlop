@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 import com.un.dao.BaseDao;
 import com.un.domain.Registration;
 
-public class RegistrationServiceImpl {
+public class RegistrationServiceImpl implements RegistrationService<Registration> {
 
 	private static final Logger logger = Logger
 			.getLogger(RegistrationServiceImpl.class);

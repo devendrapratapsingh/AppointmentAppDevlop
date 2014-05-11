@@ -6,12 +6,12 @@
  
 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
  
-    <import resource="spring-mongodb-config.xml"/>
+    <import resource="spring-mongo-config.xml"/>
    
     <bean id="regService" class="com.un.services.RegistrationServiceImpl">
-        <property name="regDao" ref="regDaoImpl"/>
+        <property name="dao" ref="regDao"/>
     </bean>
-    <bean id="regDaoImpl" class="com.un.dao.RegistrationDaoImpl">
+    <bean id="regDao" class="com.un.dao.RegistrationDaoImpl">
         <property name="mongoTemplate" ref="mongoTemplate"/>
     </bean>
 </beans>
