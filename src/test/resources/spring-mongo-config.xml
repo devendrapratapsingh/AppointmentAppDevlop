@@ -10,7 +10,7 @@
 		<!-- OPTIONAL: configure <mongo:options /> -->
 	</mongo:mongo>
     
-	<mongo:db-factory dbname="pascalalma" mongo-ref="mongo" />
+	<mongo:db-factory dbname="appointment" mongo-ref="mongo" />
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongoDbFactory" />

@@ -1,17 +1,12 @@
 package com.un;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import junit.framework.Assert;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
-import org.joda.time.DateTimeZone;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,20 +28,11 @@ public class RegistrationServiceTest extends RegistrationDaoTest {
 
 	@Test
 	public void testCreateAndFindLog() throws Exception {
-
-		BasicConfigurator.configure();
-
-		ApplicationContext context = 
-		    	   new ClassPathXmlApplicationContext(new String[] {"spring-config.xml"});
-		 
-		    
-		    
 		ObjectId id = null;
-
 		Registration registration = new Registration();
 		registration.setId(new ObjectId());
-		registration.setOrgName("UniqueNotion"+Math.random());
-		registration.setOrgPrefix("UN");
+		registration.setOrgName("UniqueNotion" + Math.random());
+		registration.setOrgPrefix("UN" + Math.random());
 		registration.setEmail("test@test.com");
 		registration.setContact("+31647608916");
 		registration.setCreatedBy("Parag2");
@@ -75,6 +61,15 @@ public class RegistrationServiceTest extends RegistrationDaoTest {
 		registration.setCreatedBy("Parag2");
 		registration.setCreateTimestamp(new Date());
 		id = service.add(registration);
+		registration = new Registration();
+		registration.setId(new ObjectId());
+		registration.setOrgName("UniqueNotion");
+		registration.setOrgPrefix("UN");
+		registration.setEmail("test@test.com");
+		registration.setContact("+31647608916");
+		registration.setCreatedBy("Parag2");
+		registration.setCreateTimestamp(new Date());
+		id = service.add(registration);
 		logger.debug("log.id =" + id);
 
 		registration = (Registration) service.get(id);
@@ -86,14 +81,10 @@ public class RegistrationServiceTest extends RegistrationDaoTest {
 	public void setUp() throws Exception {
 		logger.info("setting up test");
 		super.setUp();
+		BasicConfigurator.configure();
+
 		service = (RegistrationService<Registration>) MyTestApplicationContext
 				.getInstance().getBean("registrationService");
-		/*iBaseBO = (IBaseBO<Registration>) MyTestApplicationContext
-				.getInstance().getBean("iBaseBO");*/
-		
 
-		System.out.println(service);
-		// @TODO Run mongo with a test specific .js file to produce initial data
-		// state
 	}
 }

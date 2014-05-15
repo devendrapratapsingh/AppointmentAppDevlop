@@ -36,7 +36,7 @@ public class Registration implements Serializable {
 	private String contact;
 	private String email;
 	private String type;
-	//@DateTimeFormat(iso = ISO.DATE_TIME)
+	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date createTimestamp;
 	private String createdBy;
 	private String message;

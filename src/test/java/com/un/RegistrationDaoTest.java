@@ -25,38 +25,45 @@ public class RegistrationDaoTest {
 
 	@BeforeClass
 	public static void beforeClass() throws Exception {
-		String[] command = new String[] {
-				"/D:/softwares/MongoDB/MongoDB_2_4_9/mongod", "--dbpath",
-				"/C:/data", "--rest" };
-
-		ProcessBuilder pb = new ProcessBuilder(command);
-
-		p = pb.start();
+		/*
+		 * String[] command = new String[] {
+		 * "/D:/Application/mongodb-win32-x86_64-2.4.9/mongoDB/bin/mongod",
+		 * "--dbpath", "/C:/data", "--rest" };
+		 * 
+		 * ProcessBuilder pb = new ProcessBuilder(command);
+		 * 
+		 * p = pb.start();
+		 */
 
 		logger.debug("Process started with pid: " + p);
 
 	}
 
 	@AfterClass
-	public static void afterClass() throws Exception {
-		// Stop mongod process
-		boolean processClosed = false;
-
-		Thread.sleep(500);
-		if (p != null) {
-			while (!processClosed) {
-
-				try {
-					p.destroy();
-					processClosed = true;
-					Thread.sleep(500);
-					logger.info(" Process destroyed: " + p.exitValue());
-				} catch (IllegalThreadStateException itse) {
-					logger.warn(itse);
-					processClosed = false;
-				}
-			}
-		}
+	public static void afterClass() throws Exception {/*
+													 * // Stop mongod process
+													 * boolean processClosed =
+													 * false;
+													 * 
+													 * Thread.sleep(5000);
+													 * p.destroy(); if (p !=
+													 * null) { while
+													 * (!processClosed) {
+													 * 
+													 * try {
+													 * 
+													 * processClosed = true;
+													 * Thread.sleep(500);
+													 * logger.
+													 * info(" Process destroyed: "
+													 * + p.exitValue()); } catch
+													 * (
+													 * IllegalThreadStateException
+													 * itse) {
+													 * logger.warn(itse);
+													 * processClosed = false; }
+													 * } }
+													 */
 	}
 
 }

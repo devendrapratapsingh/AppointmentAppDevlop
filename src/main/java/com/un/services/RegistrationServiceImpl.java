@@ -4,16 +4,15 @@ package com.un.services;
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.un.bo.IBaseBO;
 import com.un.domain.Registration;
 
-@Component
+@Service("registrationService")
 public class RegistrationServiceImpl implements RegistrationService<Registration> {
 
-	private static final Logger logger = Logger
-			.getLogger(RegistrationServiceImpl.class);
+	private static final Logger logger = Logger.getLogger(RegistrationServiceImpl.class);
 	@Autowired
 	private IBaseBO<Registration> baseBO;
 

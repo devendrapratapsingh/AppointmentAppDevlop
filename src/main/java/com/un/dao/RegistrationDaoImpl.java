@@ -1,11 +1,11 @@
 package com.un.dao;
 
 import org.bson.types.ObjectId;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.un.domain.Registration;
 
-@Component
+@Repository("regDAO")
 public class RegistrationDaoImpl  extends AbstractBaseDao implements BaseDao<Registration> {
 
 	/**
