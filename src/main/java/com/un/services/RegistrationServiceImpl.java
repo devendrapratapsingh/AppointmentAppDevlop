@@ -3,33 +3,43 @@ package com.un.services;
 
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.un.dao.BaseDao;
-import com.un.dao.RegistrationDaoImpl;
+import com.un.bo.IBaseBO;
 import com.un.domain.Registration;
 
+@Component
 public class RegistrationServiceImpl implements RegistrationService<Registration> {
 
 	private static final Logger logger = Logger
 			.getLogger(RegistrationServiceImpl.class);
-	private BaseDao<Registration> dao;
+	@Autowired
+	private IBaseBO<Registration> baseBO;
 
-	public BaseDao<Registration> getDao() {
-		return dao;
+	
+
+	/**
+	 * @return the baseBO
+	 */
+	public IBaseBO<Registration> getBaseBO() {
+		return baseBO;
 	}
 
-	public void setDao(BaseDao<Registration> dao) {
-		this.dao = dao;
+	/**
+	 * @param baseBO the baseBO to set
+	 */
+	public void setBaseBO(IBaseBO<Registration> baseBO) {
+		this.baseBO = baseBO;
 	}
-
 
 	public ObjectId add(Registration registration) {
 		logger.debug("Adding a new LogItem instance");
-		return dao.insert(registration);
+		return baseBO.add(registration);
 	}
 
 	public Registration get(ObjectId id) {
-		return (Registration) dao.selectByPk(id);
+		return (Registration) baseBO.get(id);
 	}
 
 }

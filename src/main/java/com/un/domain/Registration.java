@@ -1,14 +1,17 @@
 package com.un.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.bson.types.BSONTimestamp;
 import org.bson.types.ObjectId;
+import org.joda.time.DateTimeZone;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
  * Model object package un prefix stands for United Notions
@@ -17,7 +20,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Entity
 @Table(name = "Registration")
-@Document
+@Document(collection = "Registration")
 public class Registration implements Serializable {
 
 	/**
@@ -33,7 +36,8 @@ public class Registration implements Serializable {
 	private String contact;
 	private String email;
 	private String type;
-	private BSONTimestamp createTimestamp;
+	//@DateTimeFormat(iso = ISO.DATE_TIME)
+	private Date createTimestamp;
 	private String createdBy;
 	private String message;
 
@@ -121,21 +125,6 @@ public class Registration implements Serializable {
 	}
 
 	/**
-	 * @return the createTimestamp
-	 */
-	public BSONTimestamp getCreateTimestamp() {
-		return createTimestamp;
-	}
-
-	/**
-	 * @param createTimestamp
-	 *            the createTimestamp to set
-	 */
-	public void setCreateTimestamp(BSONTimestamp createTimestamp) {
-		this.createTimestamp = createTimestamp;
-	}
-
-	/**
 	 * @return the createdBy
 	 */
 	public String getCreatedBy() {
@@ -157,4 +146,20 @@ public class Registration implements Serializable {
 	public void setMessage(final String message) {
 		this.message = message;
 	}
+
+	/**
+	 * @return the createTimestamp
+	 */
+	public Date getCreateTimestamp() {
+		return createTimestamp;
+	}
+
+	/**
+	 * @param createTimestamp the createTimestamp to set
+	 */
+	public void setCreateTimestamp(Date createTimestamp) {
+		this.createTimestamp = createTimestamp;
+	}
+	
+	
 }

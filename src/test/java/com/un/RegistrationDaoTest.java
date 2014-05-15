@@ -26,7 +26,7 @@ public class RegistrationDaoTest {
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 		String[] command = new String[] {
-				"/D:/Application/mongodb-win32-x86_64-2.4.9/mongoDB/bin/mongod", "--dbpath",
+				"/D:/softwares/MongoDB/MongoDB_2_4_9/mongod", "--dbpath",
 				"/C:/data", "--rest" };
 
 		ProcessBuilder pb = new ProcessBuilder(command);
