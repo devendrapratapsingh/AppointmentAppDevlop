@@ -1,0 +1,1 @@
+db.appointment.ensureIndex({orgPrefix:1},{unique:true});
