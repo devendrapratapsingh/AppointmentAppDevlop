@@ -9,7 +9,7 @@
 	<mongo:mongo host="localhost" port="27017">
 		<!-- OPTIONAL: configure <mongo:options /> -->
 	</mongo:mongo>
-
+    
 	<mongo:db-factory dbname="pascalalma" mongo-ref="mongo" />
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
