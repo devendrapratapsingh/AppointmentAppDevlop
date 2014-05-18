@@ -2,7 +2,6 @@ package com.un.bo;
 
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
-@Component
 public interface IBaseBO<T> {
 
 	public ObjectId add(T registration);

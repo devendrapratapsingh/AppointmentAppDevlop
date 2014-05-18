@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.un.domain.Registration;
 
 
-@Component 
 public interface RegistrationService <T>{
 
 	public ObjectId add(T registration);

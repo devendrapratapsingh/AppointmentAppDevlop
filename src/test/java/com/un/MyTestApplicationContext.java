@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Only to be used in test classes!!
  * 
- * @author pascal
+ * @author Devendra Singh
  */
 public class MyTestApplicationContext {
  
