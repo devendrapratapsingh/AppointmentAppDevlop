@@ -16,8 +16,6 @@ public class RegistrationServiceImpl implements RegistrationService<Registration
 	@Autowired
 	private IBaseBO<Registration> baseBO;
 
-	
-
 	/**
 	 * @return the baseBO
 	 */

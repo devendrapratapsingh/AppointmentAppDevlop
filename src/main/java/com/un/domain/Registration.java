@@ -2,13 +2,10 @@ package com.un.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import org.bson.types.ObjectId;
-import org.joda.time.DateTimeZone;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -16,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 /**
  * Model object package un prefix stands for United Notions
  * 
- * @author pascal
+ * @author Devendra Pratap Singh
  */
 @Entity
 @Table(name = "Registration")
@@ -30,7 +27,7 @@ public class Registration implements Serializable {
 
 	@Id
 	private ObjectId id;
-	
+
 	private String orgName;
 	private String orgPrefix;
 	private String contact;
@@ -155,11 +152,11 @@ public class Registration implements Serializable {
 	}
 
 	/**
-	 * @param createTimestamp the createTimestamp to set
+	 * @param createTimestamp
+	 *            the createTimestamp to set
 	 */
 	public void setCreateTimestamp(Date createTimestamp) {
 		this.createTimestamp = createTimestamp;
 	}
-	
-	
+
 }
