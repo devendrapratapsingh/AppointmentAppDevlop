@@ -25,7 +25,7 @@ public class ScheduleDaoImpl extends AbstractBaseDao implements BaseDao<Schedule
 	public ObjectId insert(Schedule schedule) {
 		// TODO Auto-generated method stub
 		mongoTemplate.insert(schedule);
-		return schedule.getDurationId();
+		return schedule.getId();
 	}
 
 }

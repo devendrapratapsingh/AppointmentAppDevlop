@@ -2,10 +2,13 @@ package com.un.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -29,6 +32,7 @@ public class Registration implements Serializable {
 	private ObjectId id;
 
 	private String orgName;
+	@Indexed
 	private String orgPrefix;
 	private String contact;
 	private String email;
