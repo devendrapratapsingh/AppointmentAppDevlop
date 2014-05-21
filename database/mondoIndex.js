@@ -1,1 +1,1 @@
-db.appointment.ensureIndex({orgPrefix:1},{unique:true});
+db.Registration.ensureIndex({orgPrefix:1},{unique:true});

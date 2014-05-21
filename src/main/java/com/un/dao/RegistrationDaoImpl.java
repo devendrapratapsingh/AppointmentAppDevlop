@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.un.domain.Registration;
 
-@Repository("regDAO")
+@Repository("regDao")
 public class RegistrationDaoImpl  extends AbstractBaseDao implements BaseDao<Registration> {
 
 	/**
