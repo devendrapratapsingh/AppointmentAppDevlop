@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -24,9 +25,11 @@ public class Schedule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Config config;
+	@Indexed
 	private String duration;
 	@Id
-	private ObjectId durationId;
+	private ObjectId id;
+	private Long durationId;
 	private String status;
 	private String threshold;
 	private String resourceCount;
@@ -61,20 +64,7 @@ public class Schedule implements Serializable {
 		this.duration = duration;
 	}
 
-	/**
-	 * @return the durationId
-	 */
-	public ObjectId getDurationId() {
-		return durationId;
-	}
 
-	/**
-	 * @param durationId
-	 *            the durationId to set
-	 */
-	public void setDurationId(ObjectId durationId) {
-		this.durationId = durationId;
-	}
 
 	/**
 	 * @return the status
@@ -120,5 +110,23 @@ public class Schedule implements Serializable {
 	public void setResourceCount(String resourceCount) {
 		this.resourceCount = resourceCount;
 	}
+
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+
+	public Long getDurationId() {
+		return durationId;
+	}
+
+	public void setDurationId(Long durationId) {
+		this.durationId = durationId;
+	}
+	
+	
 
 }

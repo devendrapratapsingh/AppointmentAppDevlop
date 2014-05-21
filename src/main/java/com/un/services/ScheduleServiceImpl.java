@@ -33,19 +33,6 @@ public class ScheduleServiceImpl implements ScheduleService<Schedule> {
 		return iBaseBO.get(id);
 	}
 
-	/**
-	 * @return the iBaseBO
-	 */
-	public IBaseBO<Schedule> getiBaseBO() {
-		return iBaseBO;
-	}
-
-	/**
-	 * @param iBaseBO
-	 *            the iBaseBO to set
-	 */
-	public void setiBaseBO(IBaseBO<Schedule> iBaseBO) {
-		this.iBaseBO = iBaseBO;
-	}
+	
 
 }

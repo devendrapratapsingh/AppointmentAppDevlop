@@ -2,6 +2,7 @@ package com.un.bo;
 
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.un.dao.BaseDao;
@@ -21,6 +22,7 @@ public class ScheduleBOImpl extends AbstractBaseBO implements IBaseBO<Schedule>{
 	
 	private static final Logger logger = Logger.getLogger(ScheduleBOImpl.class);
 	
+	@Autowired
 	private BaseDao<Schedule> baseDao;
 
 	
@@ -36,18 +38,6 @@ public class ScheduleBOImpl extends AbstractBaseBO implements IBaseBO<Schedule>{
 		return (Schedule) baseDao.selectByPk(id);
 	}
 
-	/**
-	 * @return the baseDao
-	 */
-	public BaseDao<Schedule> getBaseDao() {
-		return baseDao;
-	}
 
-	/**
-	 * @param baseDao the baseDao to set
-	 */
-	public void setBaseDao(BaseDao<Schedule> baseDao) {
-		this.baseDao = baseDao;
-	}
 
 }
