@@ -1,7 +1,5 @@
 package com.un;
 
-import java.util.Date;
-
 import junit.framework.Assert;
 
 import org.apache.log4j.BasicConfigurator;
@@ -14,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.un.bo.IBaseBO;
 import com.un.domain.Registration;
 import com.un.domain.Schedule;
-import com.un.services.RegistrationService;
 import com.un.services.ScheduleService;
 
+@SuppressWarnings("deprecation")
 public class ScheduleServiceTest extends RegistrationDaoTest {
 
 	private static final Logger logger = Logger
@@ -72,6 +70,7 @@ public class ScheduleServiceTest extends RegistrationDaoTest {
 		//Assert.assertNull(registration);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() throws Exception {
 		logger.info("setting up test");
