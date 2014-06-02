@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.un.domain.Customer;
 import com.un.domain.Reservation;
+import com.un.domain.Schedule;
 import com.un.services.ReservationService;
 
 public class ReservationServiceTest extends RegistrationDaoTest {
@@ -39,10 +40,11 @@ public class ReservationServiceTest extends RegistrationDaoTest {
 		reservation.setId(new ObjectId());
 		reservation.setReservationDate(new Date());
 		reservation.setReservationId(new Long(1L));
+		logger.debug("reservation = " + reservation);
 		id = reservationService.add(reservation);
 		logger.debug("reservation.id =" + id);
 
-		reservationService = (ReservationService) reservationService.get(id);
+		reservation = (Reservation) reservationService.get(id);
 		logger.debug("reservation = " + reservation);
 		Assert.assertNotNull(reservation);
 	}
