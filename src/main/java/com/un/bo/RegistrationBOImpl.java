@@ -21,13 +21,6 @@ public class RegistrationBOImpl  extends AbstractBaseBO implements IBaseBO<Regis
 	@Autowired	
 	private BaseDao<Registration> dao;
 
-	public BaseDao<Registration> getDao() {
-		return dao;
-	}
-
-	public void setDao(BaseDao<Registration> dao) {
-		this.dao = dao;
-	}
 	
 	public ObjectId add(Registration registration) {
 		logger.debug("Adding a new LogItem instance");

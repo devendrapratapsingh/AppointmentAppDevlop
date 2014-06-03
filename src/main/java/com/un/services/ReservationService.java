@@ -2,10 +2,9 @@ package com.un.services;
 
 import org.bson.types.ObjectId;
 
+public interface ReservationService <T>  {
 
-public interface RegistrationService <T>{
-
-	public ObjectId add(T registration);
+	public ObjectId add(T reservation);
 
 	public T get(ObjectId id);
 }

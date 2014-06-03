@@ -31,7 +31,7 @@ public class RegistrationServiceImpl implements RegistrationService<Registration
 	}
 
 	public ObjectId add(Registration registration) {
-		logger.debug("Adding a new LogItem instance");
+		logger.debug("Adding a new Registration instance");
 		return baseBO.add(registration);
 	}
 
