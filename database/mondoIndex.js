@@ -1,1 +1,0 @@
-db.Registration.ensureIndex({orgPrefix:1},{unique:true});
