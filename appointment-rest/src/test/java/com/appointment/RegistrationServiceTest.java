@@ -15,9 +15,8 @@ import com.appointment.bo.IBaseBO;
 import com.appointment.domain.Registration;
 import com.appointment.services.RegistrationService;
 import com.appointment.test.dao.MyTestApplicationContext;
-import com.appointment.test.dao.RegistrationDaoTest;
 
-public class RegistrationServiceTest extends RegistrationDaoTest {
+public class RegistrationServiceTest  {
 
 	private static final Logger logger = Logger
 			.getLogger(RegistrationServiceTest.class);
@@ -80,7 +79,6 @@ public class RegistrationServiceTest extends RegistrationDaoTest {
 	@Before
 	public void setUp() throws Exception {
 		logger.info("setting up test");
-		super.setUp();
 		BasicConfigurator.configure();
 
 		service = (RegistrationService<Registration>) MyTestApplicationContext
