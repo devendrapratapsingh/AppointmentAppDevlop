@@ -14,15 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.appointment.domain.Audit;
 import com.appointment.services.AuditService;
 import com.appointment.test.dao.MyTestApplicationContext;
-import com.appointment.test.dao.RegistrationDaoTest;
 
-public class AuditServiceTest extends RegistrationDaoTest{
+public class AuditServiceTest {
 	
 	private static final Logger logger = Logger.getLogger(AuditServiceTest.class);
 	
 	@Autowired
 	private AuditService<Audit> auditService;
-	@Autowired
+	
 	
 	@Test
 	public void addAudit() throws Exception {
@@ -46,7 +45,7 @@ public class AuditServiceTest extends RegistrationDaoTest{
 	@Before
 	public void setUp() throws Exception {
 		logger.info("setting up test");
-		super.setUp();
+		//super.setUp();
 		BasicConfigurator.configure();
 
 		auditService = (AuditService<Audit>) MyTestApplicationContext

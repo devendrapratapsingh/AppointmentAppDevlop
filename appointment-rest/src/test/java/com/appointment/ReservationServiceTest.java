@@ -15,9 +15,8 @@ import com.appointment.domain.Customer;
 import com.appointment.domain.Reservation;
 import com.appointment.services.ReservationService;
 import com.appointment.test.dao.MyTestApplicationContext;
-import com.appointment.test.dao.RegistrationDaoTest;
 
-public class ReservationServiceTest extends RegistrationDaoTest {
+public class ReservationServiceTest  {
 	
 	@Autowired
 	private ReservationService<Reservation> reservationService;
@@ -54,7 +53,7 @@ public class ReservationServiceTest extends RegistrationDaoTest {
 	@Before
 	public void setUp() throws Exception {
 		logger.info("setting up test");
-		super.setUp();
+		//super.setUp();
 		BasicConfigurator.configure();
 
 		reservationService = (ReservationService<Reservation>) MyTestApplicationContext

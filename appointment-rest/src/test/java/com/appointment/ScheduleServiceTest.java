@@ -14,10 +14,9 @@ import com.appointment.domain.Registration;
 import com.appointment.domain.Schedule;
 import com.appointment.services.ScheduleService;
 import com.appointment.test.dao.MyTestApplicationContext;
-import com.appointment.test.dao.RegistrationDaoTest;
 
 @SuppressWarnings("deprecation")
-public class ScheduleServiceTest extends RegistrationDaoTest {
+public class ScheduleServiceTest  {
 
 	private static final Logger logger = Logger
 			.getLogger(ScheduleServiceTest.class);
@@ -76,7 +75,7 @@ public class ScheduleServiceTest extends RegistrationDaoTest {
 	@Before
 	public void setUp() throws Exception {
 		logger.info("setting up test");
-		super.setUp();
+		
 		BasicConfigurator.configure();
 
 		service = (ScheduleService<Schedule>) MyTestApplicationContext

@@ -3,7 +3,6 @@ package com.appointment.bo;
 
 import java.io.Serializable;
 
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 /**

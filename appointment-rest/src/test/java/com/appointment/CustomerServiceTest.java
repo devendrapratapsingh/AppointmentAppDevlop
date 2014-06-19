@@ -12,9 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.appointment.domain.Customer;
 import com.appointment.services.CustomerService;
 import com.appointment.test.dao.MyTestApplicationContext;
-import com.appointment.test.dao.RegistrationDaoTest;
 
-public class CustomerServiceTest extends RegistrationDaoTest{
+public class CustomerServiceTest {
 	
 private static final Logger logger = Logger.getLogger(CustomerServiceTest.class);
 	
@@ -44,7 +43,7 @@ private static final Logger logger = Logger.getLogger(CustomerServiceTest.class)
 	@Before
 	public void setUp() throws Exception {
 		logger.info("setting up test");
-		super.setUp();
+		//super.setUp();
 		BasicConfigurator.configure();
 
 		customerService = (CustomerService<Customer>) MyTestApplicationContext

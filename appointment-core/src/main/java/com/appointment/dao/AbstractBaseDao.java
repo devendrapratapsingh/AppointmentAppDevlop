@@ -14,7 +14,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public abstract class AbstractBaseDao implements Serializable {
 	
-     @Autowired   	
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Autowired   	
 	 protected MongoTemplate mongoTemplate;
 
 	    public void setMongoTemplate(MongoTemplate template) {

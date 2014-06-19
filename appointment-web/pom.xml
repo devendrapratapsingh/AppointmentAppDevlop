@@ -9,7 +9,6 @@
   </parent>
   <groupId>appointment-web</groupId>
   <artifactId>appointment-web</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>appointment-web Maven Webapp</name>
   <url>http://maven.apache.org</url>
