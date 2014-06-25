@@ -14,8 +14,9 @@ public class ScheduleRestService {
 	public Response getAvailableSchedules(@QueryParam("param") String msg) {
  
 		//TODO
+		String output = "Jersey say : " + msg;
  
-		return Response.status(200).entity(null).build();
+		return Response.status(200).entity(output).build();
  
 	}
  

@@ -1,30 +1,75 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>appointment</artifactId>
-    <groupId>appointment</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>appointment-web</groupId>
-  <artifactId>appointment-web</artifactId>
-  <packaging>war</packaging>
-  <name>appointment-web Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <build>
-    <finalName>appointment-web</finalName>
-  </build>
-  <dependencies>
-  	<dependency>
-  		<groupId>appointment-rest</groupId>
-  		<artifactId>appointment-rest</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  		<version>4.11</version>
-  	</dependency>
-  </dependencies>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>appointment</artifactId>
+		<groupId>appointment</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>appointment-web</groupId>
+	<artifactId>appointment-web</artifactId>
+	<packaging>war</packaging>
+	<name>appointment-web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>appointment-rest</groupId>
+			<artifactId>appointment-rest</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+ 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.0.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.0.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.0.5.RELEASE</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>appointment-web</finalName>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+
+					<packagingIncludes>
+						WEB-INF/web.xml,WEB-INF/classes/**,**/*.jsp,WEB-INF/lib/*.jar
+					</packagingIncludes>
+
+					<manifest>
+						<addClasspath>true</addClasspath>
+					</manifest>
+
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<wtpmanifest>true</wtpmanifest>
+					<wtpapplicationxml>true</wtpapplicationxml>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
