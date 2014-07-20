@@ -22,4 +22,15 @@ public class RegistrationDaoImpl  extends AbstractBaseDao implements BaseDao<Reg
 		return registration.getId();
 	}
 
+	@Override
+	public ObjectId update(Registration entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Registration entity) {
+		// TODO Auto-generated method stub
+	}
+
 }

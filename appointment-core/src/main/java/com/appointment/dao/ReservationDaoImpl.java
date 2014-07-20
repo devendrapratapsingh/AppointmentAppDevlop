@@ -24,4 +24,15 @@ public class ReservationDaoImpl extends AbstractBaseDao implements BaseDao<Reser
 		return reservation.getId();
 	}
 
+	@Override
+	public ObjectId update(Reservation entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Reservation entity) {
+		// TODO Auto-generated method stub
+	}
+
 }

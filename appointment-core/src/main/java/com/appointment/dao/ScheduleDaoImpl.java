@@ -28,4 +28,15 @@ public class ScheduleDaoImpl extends AbstractBaseDao implements BaseDao<Schedule
 		return schedule.getId();
 	}
 
+	@Override
+	public ObjectId update(Schedule entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Schedule entity) {
+		// TODO Auto-generated method stub
+	}
+
 }
