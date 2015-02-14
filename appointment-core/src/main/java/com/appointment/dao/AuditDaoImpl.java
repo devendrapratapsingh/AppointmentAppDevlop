@@ -1,6 +1,10 @@
 package com.appointment.dao;
 
 import org.bson.types.ObjectId;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -26,16 +30,36 @@ public class AuditDaoImpl extends AbstractBaseDao implements BaseDao<Audit>{
 
 	@Override
 	public ObjectId update(Audit entity) {
-		// TODO Auto-generated method stub
-		Query query = new Query();
-		//query.addCriteria(Criteria.where("name").is("appleF"));
-		//mongoTemplate.upsert(query, update, entityClass);
-		return null;
+
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring-config.xml");
+		
+		MongoOperations mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");
+		
+		Query searchUserQuery = new Query(Criteria.where("id") .is (entity.getId().toString()));
+		
+		mongoOperation.remove(searchUserQuery, Audit.class);
+		
+		entity.setId(new ObjectId());
+		
+		mongoOperation.save(entity);
+		
+		return entity.getId();
+		
 	}
 
 	@Override
 	public void delete(Audit entity) {
+		
 		// TODO Auto-generated method stub
+		
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring-config.xml");
+				
+		MongoOperations mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");
+				
+		Query searchUserQuery = new Query(Criteria.where("id") .is (entity.getId().toString()));
+				
+		mongoOperation.remove(searchUserQuery, Audit.class);				
+		
 	}
 
 }
