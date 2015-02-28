@@ -1,6 +1,9 @@
 package com.appointment.dao;
 
 import org.bson.types.ObjectId;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.appointment.domain.Customer;
+import com.appointment.domain.Registration;
 
 @Repository("customerDao")
 public class CustomerDaoImpl extends AbstractBaseDao implements
@@ -30,6 +34,7 @@ public class CustomerDaoImpl extends AbstractBaseDao implements
 
 	@Override
 	public ObjectId update(Customer entity) {
+		/*
 		Query queryCustomerUpdate = new Query();
 		Long mobileNo = entity.getMobile();
 		queryCustomerUpdate.addCriteria(Criteria.where("mobile").is(mobileNo));
@@ -44,6 +49,21 @@ public class CustomerDaoImpl extends AbstractBaseDao implements
 		mongoTemplate.save(customerDbValue);
 		// TODO Auto-generated method stub
 		return null;
+		*/
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring-config.xml");
+		
+		MongoOperations mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");
+		
+		Query searchUserQuery = new Query(Criteria.where("id") .is (entity.getId().toString()));
+		
+		mongoOperation.remove(searchUserQuery, Customer.class);
+		
+		entity.setId(new ObjectId());
+		
+		mongoOperation.save(entity);
+		
+		return entity.getId();
+		
 	}
 
 	@Override
