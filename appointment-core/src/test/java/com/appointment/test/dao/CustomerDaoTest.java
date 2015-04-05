@@ -1,5 +1,7 @@
 package com.appointment.test.dao;
 
+import java.util.List;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
@@ -62,6 +64,26 @@ public class CustomerDaoTest {
 				Customer.class);
 		Assert.assertTrue("fetched and created should be same", fetchCust
 				.getId().equals(customer.getId()));
+	}
+
+	@Test
+	public void testCustmer_FindAll() {
+		Customer customer = createCustmer();
+
+		List<Customer> fetched = dao.findAll(Customer.class);
+
+		Assert.assertTrue("fetched size should be greater than zero",
+				fetched.size() > 0);
+	}
+
+	@Test
+	public void testCustmer_CountAll() {
+		Customer customer = createCustmer();
+
+		long recordCount = dao.countAll(Customer.class);
+
+		Assert.assertTrue("fetched size should be greater than zero",
+				recordCount > 0);
 	}
 
 	@Test
