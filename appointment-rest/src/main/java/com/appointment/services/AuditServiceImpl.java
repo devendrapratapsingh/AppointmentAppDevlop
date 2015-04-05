@@ -9,11 +9,12 @@ import com.appointment.bo.IBaseBO;
 import com.appointment.domain.Audit;
 
 @Service("auditService")
-public class AuditServiceImpl implements AuditService<Audit> {
-	
-	private static final Logger logger = Logger.getLogger(AuditServiceImpl.class);
+public class AuditServiceImpl implements BaseService<Audit> {
+
+	private static final Logger logger = Logger
+			.getLogger(AuditServiceImpl.class);
 	@Autowired
-	private IBaseBO<Audit> baseBO;	
+	private IBaseBO<Audit> baseBO;
 
 	/**
 	 * @return the baseBO
@@ -23,13 +24,14 @@ public class AuditServiceImpl implements AuditService<Audit> {
 	}
 
 	/**
-	 * @param baseBO the baseBO to set
+	 * @param baseBO
+	 *            the baseBO to set
 	 */
 	public void setBaseBO(IBaseBO<Audit> baseBO) {
 		this.baseBO = baseBO;
 	}
 
-	public ObjectId addAudit(Audit audit) {
+	public Audit add(Audit audit) {
 		logger.debug("Adding Audit class instance");
 		return baseBO.add(audit);
 	}

@@ -9,9 +9,10 @@ import com.appointment.bo.IBaseBO;
 import com.appointment.domain.Reservation;
 
 @Service("reservationService")
-public class ReservationServiceImpl implements ReservationService<Reservation>  {
-	
-	private static final Logger logger = Logger.getLogger(ReservationServiceImpl.class);
+public class ReservationServiceImpl implements BaseService<Reservation> {
+
+	private static final Logger logger = Logger
+			.getLogger(ReservationServiceImpl.class);
 
 	@Autowired
 	private IBaseBO<Reservation> baseBO;
@@ -24,14 +25,14 @@ public class ReservationServiceImpl implements ReservationService<Reservation>  
 	}
 
 	/**
-	 * @param baseBO the baseBO to set
+	 * @param baseBO
+	 *            the baseBO to set
 	 */
 	public void setBaseBO(IBaseBO<Reservation> baseBO) {
 		this.baseBO = baseBO;
 	}
 
-	
-	public ObjectId add(Reservation reservation) {
+	public Reservation add(Reservation reservation) {
 		logger.debug("Adding a new Reservation instance");
 		return baseBO.add(reservation);
 	}

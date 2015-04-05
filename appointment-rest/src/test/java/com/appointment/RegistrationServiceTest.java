@@ -13,21 +13,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.appointment.bo.IBaseBO;
 import com.appointment.domain.Registration;
-import com.appointment.services.RegistrationService;
+import com.appointment.services.BaseService;
 import com.appointment.test.dao.MyTestApplicationContext;
 
-public class RegistrationServiceTest  {
+public class RegistrationServiceTest {
 
 	private static final Logger logger = Logger
 			.getLogger(RegistrationServiceTest.class);
 	@Autowired
-	private RegistrationService<Registration> service;
+	private BaseService<Registration> service;
 	@Autowired
 	private IBaseBO<Registration> iBaseBO;
 
 	@Test
 	public void testCreateAndFindLog() throws Exception {
-		ObjectId id = null;
+		Registration savedRegistration = null;
 		Registration registration = new Registration();
 		registration.setId(new ObjectId());
 		registration.setOrgName("UniqueNotion" + Math.random());
@@ -36,44 +36,12 @@ public class RegistrationServiceTest  {
 		registration.setContact("+31647608916");
 		registration.setCreatedBy("Parag2");
 		registration.setCreateTimestamp(new Date());
-		id = service.add(registration);
-		logger.debug("log.id =" + id);
+		savedRegistration = service.add(registration);
+		logger.debug("savedRegistration {}" + savedRegistration);
 
-		registration = (Registration) service.get(id);
+		registration = (Registration) service.get(savedRegistration.getId());
 		logger.debug("registration = " + registration);
 		Assert.assertNotNull(registration);
-	}
-
-	@Test
-	public void duplicateRecord() throws Exception {
-
-		BasicConfigurator.configure();
-
-		ObjectId id = null;
-
-		Registration registration = new Registration();
-		registration.setId(new ObjectId());
-		registration.setOrgName("UniqueNotion");
-		registration.setOrgPrefix("UN");
-		registration.setEmail("test@test.com");
-		registration.setContact("+31647608916");
-		registration.setCreatedBy("Parag2");
-		registration.setCreateTimestamp(new Date());
-		id = service.add(registration);
-		registration = new Registration();
-		registration.setId(new ObjectId());
-		registration.setOrgName("UniqueNotion");
-		registration.setOrgPrefix("UN");
-		registration.setEmail("test@test.com");
-		registration.setContact("+31647608916");
-		registration.setCreatedBy("Parag2");
-		registration.setCreateTimestamp(new Date());
-		id = service.add(registration);
-		logger.debug("log.id =" + id);
-
-		registration = (Registration) service.get(id);
-		logger.debug("registration = " + registration);
-		Assert.assertNull(registration);
 	}
 
 	@Before
@@ -81,7 +49,7 @@ public class RegistrationServiceTest  {
 		logger.info("setting up test");
 		BasicConfigurator.configure();
 
-		service = (RegistrationService<Registration>) MyTestApplicationContext
+		service = (BaseService<Registration>) MyTestApplicationContext
 				.getInstance().getBean("registrationService");
 
 	}

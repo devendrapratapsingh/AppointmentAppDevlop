@@ -7,9 +7,11 @@ import org.springframework.stereotype.Component;
 
 import com.appointment.dao.BaseDao;
 import com.appointment.domain.Registration;
+
 @Component
-public class RegistrationBOImpl  extends AbstractBaseBO implements IBaseBO<Registration> {
-		
+public class RegistrationBOImpl extends AbstractBaseBO implements
+		IBaseBO<Registration> {
+
 	/**
 	 * 
 	 */
@@ -17,18 +19,17 @@ public class RegistrationBOImpl  extends AbstractBaseBO implements IBaseBO<Regis
 
 	private static final Logger logger = Logger
 			.getLogger(RegistrationBOImpl.class);
-	
-	@Autowired	
+
+	@Autowired
 	private BaseDao<Registration> dao;
 
-	
-	public ObjectId add(Registration registration) {
+	public Registration add(Registration registration) {
 		logger.debug("Adding a new LogItem instance");
 		return dao.insert(registration);
 	}
 
 	public Registration get(ObjectId id) {
-		return (Registration) dao.selectByPk(id);
+		return (Registration) dao.selectByPk(id, Registration.class);
 	}
 
 }

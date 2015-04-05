@@ -16,19 +16,20 @@ public class AuditBOImpl extends AbstractBaseBO implements IBaseBO<Audit> {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private static final Logger logger = Logger.getLogger(AuditServiceImpl.class);
+
+	private static final Logger logger = Logger
+			.getLogger(AuditServiceImpl.class);
 	@Autowired
 	private BaseDao<Audit> baseDao;
 
-	public ObjectId add(Audit audit) {
+	public Audit add(Audit audit) {
 		logger.debug("Add audi instance ");
 		return baseDao.insert(audit);
 	}
 
 	public Audit get(ObjectId id) {
 		logger.debug("Get stored audit instance");
-		return baseDao.selectByPk(id);
+		return baseDao.selectByPk(id, Audit.class);
 	}
 
 }

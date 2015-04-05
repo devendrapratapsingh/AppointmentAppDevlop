@@ -9,9 +9,10 @@ import com.appointment.bo.IBaseBO;
 import com.appointment.domain.Customer;
 
 @Service("customerService")
-public class CustomerServiceImpl implements CustomerService<Customer> {
+public class CustomerServiceImpl implements BaseService<Customer> {
 
-	private static final Logger logger = Logger.getLogger(CustomerServiceImpl.class);
+	private static final Logger logger = Logger
+			.getLogger(CustomerServiceImpl.class);
 	@Autowired
 	private IBaseBO<Customer> baseBO;
 
@@ -23,7 +24,8 @@ public class CustomerServiceImpl implements CustomerService<Customer> {
 	}
 
 	/**
-	 * @param baseBO the baseBO to set
+	 * @param baseBO
+	 *            the baseBO to set
 	 */
 	public void setBaseBO(IBaseBO<Customer> baseBO) {
 		this.baseBO = baseBO;
@@ -34,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService<Customer> {
 		return baseBO.get(id);
 	}
 
-	public ObjectId addCustomer(Customer customer) {
+	public Customer add(Customer customer) {
 		logger.debug("Adding a new Customer instance");
 		return baseBO.add(customer);
 	}

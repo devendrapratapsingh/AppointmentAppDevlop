@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import com.appointment.domain.Registration;
 import com.appointment.domain.Schedule;
 
 /**
@@ -16,52 +15,32 @@ import com.appointment.domain.Schedule;
  * 
  */
 @Repository("scheduleDao")
-public class ScheduleDaoImpl extends AbstractBaseDao implements BaseDao<Schedule> {
+public class ScheduleDaoImpl extends AbstractBaseDao<Schedule> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Schedule selectByPk(ObjectId id) {
-		// TODO Auto-generated method stub
-		return (Schedule) mongoTemplate.findById(id, Schedule.class);
-	}
-
-	public ObjectId insert(Schedule schedule) {
-		// TODO Auto-generated method stub
-		mongoTemplate.insert(schedule);
-		return schedule.getId();
-	}
-
 	@Override
-	public ObjectId update(Schedule entity) {
-		
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring-config.xml");
-		
-		MongoOperations mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");
-		
-		Query searchUserQuery = new Query(Criteria.where("id") .is (entity.getId().toString()));
-		
+	public Schedule update(Schedule entity) {
+
+		ApplicationContext ctx = new GenericXmlApplicationContext(
+				"spring-config.xml");
+
+		MongoOperations mongoOperation = (MongoOperations) ctx
+				.getBean("mongoTemplate");
+
+		Query searchUserQuery = new Query(Criteria.where("id").is(
+				entity.getId().toString()));
+
 		mongoOperation.remove(searchUserQuery, Schedule.class);
-		
-		entity.setId(new ObjectId());
-		
-		mongoOperation.save(entity);
-		
-		return entity.getId();
-	}
 
-	@Override
-	public void delete(Schedule entity) {
-	
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring-config.xml");
-		
-		MongoOperations mongoOperation = (MongoOperations)ctx.getBean("mongoTemplate");
-		
-		Query searchUserQuery = new Query(Criteria.where("id") .is (entity.getId().toString()));
-		
-		mongoOperation.remove(searchUserQuery, Registration.class);
+		entity.setId(new ObjectId());
+
+		mongoOperation.save(entity);
+
+		return entity;
 	}
 
 }

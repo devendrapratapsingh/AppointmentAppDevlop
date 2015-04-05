@@ -1,6 +1,5 @@
 package com.appointment.services;
 
-
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +9,10 @@ import com.appointment.bo.IBaseBO;
 import com.appointment.domain.Registration;
 
 @Service("registrationService")
-public class RegistrationServiceImpl implements RegistrationService<Registration> {
+public class RegistrationServiceImpl implements BaseService<Registration> {
 
-	private static final Logger logger = Logger.getLogger(RegistrationServiceImpl.class);
+	private static final Logger logger = Logger
+			.getLogger(RegistrationServiceImpl.class);
 	@Autowired
 	private IBaseBO<Registration> baseBO;
 
@@ -24,13 +24,14 @@ public class RegistrationServiceImpl implements RegistrationService<Registration
 	}
 
 	/**
-	 * @param baseBO the baseBO to set
+	 * @param baseBO
+	 *            the baseBO to set
 	 */
 	public void setBaseBO(IBaseBO<Registration> baseBO) {
 		this.baseBO = baseBO;
 	}
 
-	public ObjectId add(Registration registration) {
+	public Registration add(Registration registration) {
 		logger.debug("Adding a new Registration instance");
 		return baseBO.add(registration);
 	}

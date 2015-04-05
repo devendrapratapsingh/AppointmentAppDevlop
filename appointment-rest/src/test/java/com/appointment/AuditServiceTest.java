@@ -12,20 +12,20 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.appointment.domain.Audit;
-import com.appointment.services.AuditService;
+import com.appointment.services.BaseService;
 import com.appointment.test.dao.MyTestApplicationContext;
 
 public class AuditServiceTest {
-	
-	private static final Logger logger = Logger.getLogger(AuditServiceTest.class);
-	
+
+	private static final Logger logger = Logger
+			.getLogger(AuditServiceTest.class);
+
 	@Autowired
-	private AuditService<Audit> auditService;
-	
-	
+	private BaseService<Audit> auditService;
+
 	@Test
 	public void addAudit() throws Exception {
-		ObjectId id = null;
+		Audit savedAudit = null;
 		Audit audit = new Audit();
 		audit.setAction("Add");
 		audit.setActionBy("Devendra");
@@ -33,22 +33,22 @@ public class AuditServiceTest {
 		audit.setDescription("created audit for test");
 		audit.setEntityName("Reservation");
 		audit.setId(new ObjectId());
-		id = auditService.addAudit(audit);
-		logger.debug("audit.id =" + id);
+		savedAudit = auditService.add(audit);
+		logger.debug("audit =" + savedAudit);
 
-		audit = (Audit) auditService.get(id);
+		audit = (Audit) auditService.get(savedAudit.getId());
 		logger.debug("schedule = " + audit);
 		Assert.assertNotNull(audit);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() throws Exception {
 		logger.info("setting up test");
-		//super.setUp();
+		// super.setUp();
 		BasicConfigurator.configure();
 
-		auditService = (AuditService<Audit>) MyTestApplicationContext
+		auditService = (BaseService<Audit>) MyTestApplicationContext
 				.getInstance().getBean("auditService");
 
 	}

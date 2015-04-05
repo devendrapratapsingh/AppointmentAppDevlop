@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.appointment.dao.BaseDao;
 import com.appointment.domain.Customer;
+
 @Component
 public class CustomerBOImpl extends AbstractBaseBO implements IBaseBO<Customer> {
-	
+
 	/**
 	 * 
 	 */
@@ -17,15 +18,15 @@ public class CustomerBOImpl extends AbstractBaseBO implements IBaseBO<Customer> 
 	private static final Logger logger = Logger.getLogger(CustomerBOImpl.class);
 	@Autowired
 	private BaseDao<Customer> baseDao;
-	
-	public ObjectId add(Customer customer) {
+
+	public Customer add(Customer customer) {
 		logger.debug("Adding customer instance");
 		return baseDao.insert(customer);
 	}
 
 	public Customer get(ObjectId id) {
 		logger.debug("Getting stored customer instance");
-		return baseDao.selectByPk(id);
+		return baseDao.selectByPk(id, Customer.class);
 	}
 
 }
