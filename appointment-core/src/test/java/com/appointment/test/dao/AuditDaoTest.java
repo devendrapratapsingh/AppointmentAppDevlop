@@ -1,9 +1,14 @@
 package com.appointment.test.dao;
 
+import java.util.Date;
+import java.util.List;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.appointment.dao.BaseDao;
@@ -16,19 +21,73 @@ public class AuditDaoTest {
 	@Autowired
 	private BaseDao<Audit> dao;
 
-	protected ObjectId id = null;
-
 	@Before
 	public void setUp() throws Exception {
 		// @Todo Run mongo with a test specific .js file to produce initial data
 		// state
-		logger.info("setting up test");
 		BasicConfigurator.configure();
 
 		dao = (BaseDao<Audit>) MyTestApplicationContext.getInstance().getBean(
 				"auditDao");
 	}
+	
+	@Test
+	public void testAudit_Insert() {
+		Audit Audit = createAudit();
 
+		Audit insertedAudit = dao.insert(Audit);
+
+		Audit insertedAud = dao.selectByPk(insertedAudit.getId(),
+				Audit.class);
+		Assert.assertNotNull(" Audit inserted", insertedAud);
+	}
+
+
+	@Test
+	public void testAudit_Find() {
+		Audit Audit = createAudit();
+
+		Audit insertedAudit = dao.insert(Audit);
+
+		Audit fetchAud = dao.selectByPk(insertedAudit.getId(),
+				Audit.class);
+		Assert.assertTrue("fetched and created should be same", fetchAud
+				.getId().equals(Audit.getId()));
+	}
+
+	@Test
+	public void testAudit_FindAll() {
+		Audit Audit = createAudit();
+
+		List<Audit> fetched = dao.findAll(Audit.class);
+
+		Assert.assertTrue("fetched size should be greater than zero",
+				fetched.size() > 0);
+	}
+
+	@Test
+	public void testAudit_CountAll() {
+		Audit Audit = createAudit();
+
+		long recordCount = dao.countAll(Audit.class);
+
+		Assert.assertTrue("fetched size should be greater than zero",
+				recordCount > 0);
+	}
+
+	private Audit createAudit() {
+		Audit Audit = new Audit();
+		Audit.setAction("Test Audit Action");
+		Audit.setActionBy("Amit");
+		Audit.setActionCreationDate(new Date());
+		Audit.setDescription("Test Audit Action");
+		Audit.setEntityName("Audit");
+		Audit.setId(new ObjectId());
+		return Audit;
+	}
+
+
+	
 	// @BeforeClass
 	public static void beforeClass() throws Exception {
 

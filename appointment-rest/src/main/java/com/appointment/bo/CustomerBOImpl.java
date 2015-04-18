@@ -1,7 +1,6 @@
 package com.appointment.bo;
 
 import org.apache.log4j.Logger;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +8,7 @@ import com.appointment.dao.BaseDao;
 import com.appointment.domain.Customer;
 
 @Component
-public class CustomerBOImpl extends AbstractBaseBO implements IBaseBO<Customer> {
+public class CustomerBOImpl extends AbstractBaseBO<Customer>  {
 
 	/**
 	 * 
@@ -19,14 +18,12 @@ public class CustomerBOImpl extends AbstractBaseBO implements IBaseBO<Customer> 
 	@Autowired
 	private BaseDao<Customer> baseDao;
 
-	public Customer add(Customer customer) {
-		logger.debug("Adding customer instance");
-		return baseDao.insert(customer);
-	}
+	@Override
+	public Customer modify(Customer entity) {
 
-	public Customer get(ObjectId id) {
-		logger.debug("Getting stored customer instance");
-		return baseDao.selectByPk(id, Customer.class);
+		logger.debug("Update instance");
+		return baseDao.update(entity);
+		
 	}
-
+	
 }

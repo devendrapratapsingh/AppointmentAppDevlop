@@ -1,9 +1,7 @@
 package com.appointment.dao;
 
 import org.bson.types.ObjectId;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
@@ -21,21 +19,14 @@ public class ReservationDaoImpl extends AbstractBaseDao<Reservation> implements
 
 	@Override
 	public Reservation update(Reservation entity) {
-		ApplicationContext ctx = new GenericXmlApplicationContext(
-				"spring-config.xml");
-
-		MongoOperations mongoOperation = (MongoOperations) ctx
-				.getBean("mongoTemplate");
-
-		Query searchUserQuery = new Query(Criteria.where("id").is(
-				entity.getId().toString()));
-
-		mongoOperation.remove(searchUserQuery, Reservation.class);
-
-		entity.setId(new ObjectId());
-
-		mongoOperation.save(entity);
-
+		Query queryReservationUpdate = new Query();
+		ObjectId objId = entity.getId();
+		queryReservationUpdate.addCriteria(Criteria.where("id").is(objId));
+		Reservation storedReservation = mongoTemplate.findOne(queryReservationUpdate,
+				Reservation.class);
+		entity.setId(storedReservation.getId());
+		BeanUtils.copyProperties(entity, storedReservation);
+		mongoTemplate.save(storedReservation);
 		return entity;
 	}
 

@@ -1,34 +1,60 @@
 package com.appointment.services;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.appointment.bo.IBaseBO;
+import com.appointment.bo.BaseBO;
 import com.appointment.domain.Schedule;
 
-/**
- * @author Parag Shrivastava
- * 
- */
+
 @Service("scheduleService")
 public class ScheduleServiceImpl implements BaseService<Schedule> {
 
 	private static final Logger logger = Logger
 			.getLogger(ScheduleServiceImpl.class);
-
 	@Autowired
-	private IBaseBO<Schedule> iBaseBO;
+	private BaseBO<Schedule> baseBO;
 
-	public Schedule add(Schedule schedule) {
-		logger.debug("This is add Schedule entity menthod");
-		return iBaseBO.add(schedule);
+	@Override
+	public Schedule get(ObjectId id) {
+		logger.debug("Getting a stored Schedule instance");
+		Schedule Schedule = baseBO.get(id, Schedule.class);
+		return Schedule;
+	}
+	@Override
+	public Schedule add(Schedule sch) {
+		logger.debug("Adding a new Schedule instance");
+		Schedule Schedule = baseBO.add(sch);
+		return Schedule;
+	}
+	@Override
+	public Schedule modify(Schedule sch) {
+		logger.debug("Modifying the Schedule instance");
+		Schedule Schedule = baseBO.add(sch);
+		return Schedule;
 	}
 
-	public Schedule get(ObjectId id) {
-		logger.debug("This is get Schedule entity method");
-		return iBaseBO.get(id);
+	@Override
+	public List<Schedule> getAll(Class<Schedule> entityClass) {
+		logger.debug("Getting all the Schedules");
+		List<Schedule> fetched = baseBO.getAll(Schedule.class);
+		return fetched;
+	}
+	@Override
+	public Long countAll(Class<Schedule> entityClass) {
+		logger.debug("Counting the Schedules");
+		long recordCount = baseBO.countAll(Schedule.class);
+		return recordCount;
+	}
+	@Override
+	public void remove(Schedule entity, Class<Schedule> entityClass) {
+		logger.debug("removing the Schedule");
+		baseBO.remove(entity, entityClass);
+	
 	}
 
 }
