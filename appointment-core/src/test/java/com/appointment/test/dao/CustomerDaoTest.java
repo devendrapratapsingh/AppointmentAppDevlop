@@ -21,7 +21,6 @@ public class CustomerDaoTest {
 	@Autowired
 	private BaseDao<Customer> dao;
 
-	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() throws Exception {
 		BasicConfigurator.configure();
@@ -68,12 +67,8 @@ public class CustomerDaoTest {
 	}
 
 	@Test
-<<<<<<< HEAD
-	public void testCustmer_FindAll() {
-=======
 	public void testCustomer_FindAll() {
 		Customer customer = createCustomer();
->>>>>>> 78b6884dbcbd34472affcb458f52b3bbff4881c7
 
 		List<Customer> fetched = dao.findAll(Customer.class);
 
@@ -82,12 +77,8 @@ public class CustomerDaoTest {
 	}
 
 	@Test
-<<<<<<< HEAD
-	public void testCustmer_CountAll() {
-=======
 	public void testCustomer_CountAll() {
 		Customer customer = createCustomer();
->>>>>>> 78b6884dbcbd34472affcb458f52b3bbff4881c7
 
 		long recordCount = dao.countAll(Customer.class);
 
