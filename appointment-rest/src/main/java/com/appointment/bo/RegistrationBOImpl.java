@@ -1,5 +1,7 @@
 package com.appointment.bo;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,11 @@ public class RegistrationBOImpl extends AbstractBaseBO implements
 
 	public Registration get(ObjectId id) {
 		return (Registration) dao.selectByPk(id, Registration.class);
+	}
+
+	@Override
+	public List<Registration> getAll() {
+		return dao.findAll(Registration.class);
 	}
 
 }

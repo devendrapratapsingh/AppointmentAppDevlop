@@ -1,5 +1,7 @@
 package com.appointment.bo;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,11 @@ public class AuditBOImpl extends AbstractBaseBO implements IBaseBO<Audit> {
 	public Audit get(ObjectId id) {
 		logger.debug("Get stored audit instance");
 		return baseDao.selectByPk(id, Audit.class);
+	}
+
+	@Override
+	public List<Audit> getAll() {
+		return baseDao.findAll(Audit.class);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.appointment.bo;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,11 @@ public class ReservationBOImpl extends AbstractBaseBO implements
 	public Reservation get(ObjectId id) {
 		logger.debug("Get Reservation instance stored");
 		return baseDao.selectByPk(id, Reservation.class);
+	}
+
+	@Override
+	public List<Reservation> getAll() {
+		return baseDao.findAll(Reservation.class);
 	}
 
 }

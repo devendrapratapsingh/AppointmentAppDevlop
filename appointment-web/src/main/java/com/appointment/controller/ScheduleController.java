@@ -1,16 +1,21 @@
 package com.appointment.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import com.appointment.domain.Schedule;
+import com.appointment.services.ScheduleServiceImpl;
+
+@RestController
 public class ScheduleController {
-	
-	/*@RequestMapping(value = "/{name}", method = RequestMethod.GET)
-	public String getMovie(@PathVariable String name, ModelMap model) {
- 
-		model.addAttribute("movie", name);
-		return "list";
- 
-	}*/
 
+	@Autowired
+	private ScheduleServiceImpl scheduleService;
+
+	@RequestMapping("/schedule")
+	public Schedule getSchedule() {
+		return 
+
+	}
 }

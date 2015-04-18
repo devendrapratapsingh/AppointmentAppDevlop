@@ -1,5 +1,7 @@
 package com.appointment.bo;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,11 @@ public class ScheduleBOImpl extends AbstractBaseBO implements IBaseBO<Schedule> 
 	public Schedule get(ObjectId id) {
 		logger.debug("This is get Schedule entity by ObjectId method");
 		return (Schedule) baseDao.selectByPk(id, Schedule.class);
+	}
+
+	@Override
+	public List<Schedule> getAll() {
+		return baseDao.findAll(Schedule.class);
 	}
 
 }
