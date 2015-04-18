@@ -31,8 +31,8 @@ public class CustomerDaoTest {
 	}
 
 	@Test
-	public void testCustmer_Insert() {
-		Customer customer = createCustmer();
+	public void testCustomer_Insert() {
+		Customer customer = createCustomer();
 
 		Customer insertedCustomer = dao.insert(customer);
 
@@ -42,8 +42,8 @@ public class CustomerDaoTest {
 	}
 
 	@Test
-	public void testCustmer_Delete() {
-		Customer customer = createCustmer();
+	public void testCustomer_Delete() {
+		Customer customer = createCustomer();
 
 		Customer insertedCustomer = dao.insert(customer);
 
@@ -56,8 +56,8 @@ public class CustomerDaoTest {
 	}
 
 	@Test
-	public void testCustmer_Find() {
-		Customer customer = createCustmer();
+	public void testCustomer_Find() {
+		Customer customer = createCustomer();
 
 		Customer insertedCustomer = dao.insert(customer);
 
@@ -68,7 +68,12 @@ public class CustomerDaoTest {
 	}
 
 	@Test
+<<<<<<< HEAD
 	public void testCustmer_FindAll() {
+=======
+	public void testCustomer_FindAll() {
+		Customer customer = createCustomer();
+>>>>>>> 78b6884dbcbd34472affcb458f52b3bbff4881c7
 
 		List<Customer> fetched = dao.findAll(Customer.class);
 
@@ -77,7 +82,12 @@ public class CustomerDaoTest {
 	}
 
 	@Test
+<<<<<<< HEAD
 	public void testCustmer_CountAll() {
+=======
+	public void testCustomer_CountAll() {
+		Customer customer = createCustomer();
+>>>>>>> 78b6884dbcbd34472affcb458f52b3bbff4881c7
 
 		long recordCount = dao.countAll(Customer.class);
 
@@ -86,8 +96,8 @@ public class CustomerDaoTest {
 	}
 
 	@Test
-	public void testCustmer_Update() {
-		Customer customer = createCustmer();
+	public void testCustomer_Update() {
+		Customer customer = createCustomer();
 
 		customer.setName("Devendra");
 
@@ -96,7 +106,7 @@ public class CustomerDaoTest {
 				.getId().equals(customer.getId()));
 	}
 
-	private Customer createCustmer() {
+	private Customer createCustomer() {
 		Customer customer = new Customer();
 		customer.setName("amit");
 		customer.setEmail("amitthapar123@gmail.com");
