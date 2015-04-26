@@ -76,6 +76,11 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.13</version>
         </dependency>
+          <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
 		<dependency>
 			<groupId>appointment-core</groupId>
 			<artifactId>appointment-core</artifactId>
@@ -98,6 +103,7 @@
             <version>1.2.3.RELEASE</version>
             <scope>provided</scope>
         </dependency>
+        
 	</dependencies>
 	<build>
 		<finalName>appointment-web</finalName>
