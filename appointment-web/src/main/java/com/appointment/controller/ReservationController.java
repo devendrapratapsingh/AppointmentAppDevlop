@@ -30,7 +30,7 @@ public class ReservationController {
 	private CounterService counterService;
 
 	@RequestMapping(value = URIConstants.ADD_RESERVATION, method = RequestMethod.POST, headers = "Accept=application/json")
-	public void addReservation(@RequestBody Reservation entity) {
+	public Long addReservation(@RequestBody Reservation entity) {
 
 		if (entity != null) {
 			entity.setReservationId(counterService
@@ -38,7 +38,9 @@ public class ReservationController {
 			entity.setCreateDate(new Date());
 
 			service.add(entity);
+
 		}
+		return entity.getReservationId();
 
 	}
 }
