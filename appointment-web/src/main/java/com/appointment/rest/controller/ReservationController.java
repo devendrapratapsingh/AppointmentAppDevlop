@@ -1,4 +1,4 @@
-package com.appointment.controller;
+package com.appointment.rest.controller;
 
 import java.util.Date;
 
